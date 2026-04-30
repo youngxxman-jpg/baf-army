@@ -204,7 +204,12 @@
     THE GUST IS HERE.<br/><span class="text-[var(--neon-yellow)] glow-yellow">THE GAINS ARE REAL.</span>
   </h1>
   <div id="cta" class="mt-10 flex flex-wrap justify-center gap-4">
-    <a href="https://t.me/BAFArmyOfficial" target="_blank" class="btn-primary">Join Telegram</a>
+    <a href="https://t.me/BAFArmyOfficial" target="_blank" class="btn-primary text-base">
+      💬 Join the BAF Army (Telegram)
+    </a>
+    <a href="https://raydium.io/" target="_blank" class="btn-secondary text-base">
+      ⚡ Buy $BAF (Raydium)
+    </a>
   </div>
 </section>
 
@@ -216,8 +221,7 @@
       <button onclick="releaseTheGust()" class="fart-button">💨 PUSH FOR GUST 💨</button>
       <div id="gas-cloud" class="absolute inset-0 pointer-events-none opacity-0 flex items-center justify-center text-8xl transition-all duration-500">💨</div>
     </div>
-    <audio id="fart-sound-1" src="https://archive.org/download/fart-with-reverb/fart-with-reverb.mp3" preload="auto"></audio>
-    <audio id="fart-sound-2" src="https://archive.org/download/rude_and_shocking_sound_effects/Farting%20-%20Short.mp3" preload="auto"></audio>
+    <audio id="fart-sound" src="https://raw.githubusercontent.com/jonjonsson/SoundMonster/master/sounds/fart%20powerful.mp3"></audio>
   </div>
 </section>
 
@@ -282,18 +286,18 @@
   setInterval(function() {
     const now = new Date().getTime();
     const distance = targetDate - now;
-    document.getElementById("timer-top").innerHTML = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)) + "h " + Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)) + "m " + Math.floor((distance % (1000 * 60)) / 1000) + "s ";
+    const timeStr = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)) + "h " + Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)) + "m " + Math.floor((distance % (1000 * 60)) / 1000) + "s ";
+    document.getElementById("timer-top").innerHTML = timeStr;
   }, 1000);
 
   function releaseTheGust() {
-    const sound1 = document.getElementById("fart-sound-1");
-    const sound2 = document.getElementById("fart-sound-2");
+    const sound = document.getElementById("fart-sound");
     const cloud = document.getElementById("gas-cloud");
     document.body.classList.add("shake");
     cloud.style.opacity = "1";
     cloud.style.transform = "scale(1.5) translateY(-50px)";
-    sound1.currentTime = 0;
-    sound1.play().catch(() => { sound2.currentTime = 0; sound2.play(); });
+    sound.currentTime = 0;
+    sound.play();
     setTimeout(() => { document.body.classList.remove("shake"); cloud.style.opacity = "0"; cloud.style.transform = "scale(1) translateY(0)"; }, 500);
   }
 </script>
