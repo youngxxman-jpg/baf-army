@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Big Ass Fartcoin ($BAF) — The Gust Is Here</title>
+  <title>Big Ass Fartcoin ($BAF) — THE GUST IS HERE</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Exo+2:wght@400;600;700;900&display=swap" rel="stylesheet" />
   <style>
@@ -279,7 +279,7 @@
 <section id="the-button" class="py-24 px-4 text-center bg-[#050705]">
   <div class="max-w-4xl mx-auto">
     <h2 class="font-black-ops text-4xl sm:text-5xl glow-orange text-[var(--neon-orange)] mb-8 uppercase">RELEASE THE GUST</h2>
-    <p class="text-gray-400 mb-12 text-lg">Click the button to feel the sheer power of $BAF. (Caution: May cause screen tremors)</p>
+    <p class="text-gray-400 mb-12 text-lg">Click the button to feel the sheer power of $BAF. (Caution: No talking, just isolated sound power!)</p>
     
     <div class="relative inline-block">
       <button onclick="releaseTheGust()" class="fart-button">
@@ -288,6 +288,7 @@
       <div id="gas-cloud" class="absolute inset-0 pointer-events-none opacity-0 flex items-center justify-center text-8xl transition-all duration-500">💨</div>
     </div>
 
+    <!-- Verified isolated pure sound effect -->
     <audio id="fart-sound" src="https://raw.githubusercontent.com/jonjonsson/SoundMonster/master/sounds/fart%20powerful.mp3"></audio>
   </div>
 </section>
@@ -415,7 +416,7 @@
           Every transaction redistributes <strong class="text-[var(--neon-green)]">1% back to all holders</strong>.
           Just hold $BAF and watch your wallet grow — automatically, passively, forever.
         </p>
-        <div class="mt-6 bg-[#001a00] border border-[#39ff1433] rounded-xl p-4">
+        <div class="mt-6 bg="#001a00" border border-[#39ff1433] rounded-xl p-4">
           <p class="text-xs text-gray-500 uppercase tracking-widest">Effect</p>
           <p class="text-[var(--neon-green)] font-black text-lg mt-1">Passive Income</p>
         </div>
@@ -583,7 +584,12 @@
     
     // Play sound
     sound.currentTime = 0;
-    sound.play();
+    sound.play().catch(e => {
+      console.error("Audio play failed:", e);
+      // Fallback in case of raw content blocks
+      sound.src = "https://www.soundjay.com/communication/sounds/fart-01.mp3";
+      sound.play();
+    });
 
     // Visual feedback
     document.body.classList.add("shake");
