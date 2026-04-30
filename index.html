@@ -41,6 +41,7 @@
     .glow-yellow { text-shadow: 0 0 20px #fff01f, 0 0 40px #fff01f, 0 0 80px #fff01f; }
     .glow-orange { text-shadow: 0 0 20px #ff6b00, 0 0 40px #ff6b00; }
     .box-glow-green { box-shadow: 0 0 18px #39ff1466, 0 0 40px #39ff1422; }
+    .box-glow-yellow { box-shadow: 0 0 18px #fff01f66, 0 0 40px #fff01f22; }
 
     /* ---- Hero particles (pure CSS) ---- */
     .hero-bg {
@@ -54,6 +55,13 @@
       50%       { filter: drop-shadow(0 0 34px #39ff14cc) drop-shadow(0 0 70px #39ff1466); transform: scale(1.04); }
     }
     .logo-pulse { animation: logo-pulse 3s ease-in-out infinite; }
+
+    /* ---- Fart cloud float ---- */
+    @keyframes cloud-float {
+      0%, 100% { transform: translateY(0) rotate(-2deg); }
+      50%       { transform: translateY(-18px) rotate(2deg); }
+    }
+    .cloud-float { animation: cloud-float 5s ease-in-out infinite; }
 
     /* ---- CTA Buttons ---- */
     .btn-primary {
@@ -70,6 +78,7 @@
       text-decoration: none;
       cursor: pointer;
     }
+    .btn-primary:hover { transform: translateY(-3px) scale(1.04); box-shadow: 0 0 40px #39ff14bb; }
 
     .btn-secondary {
       background: linear-gradient(135deg, #fff01f, #e6a000);
@@ -85,6 +94,7 @@
       text-decoration: none;
       cursor: pointer;
     }
+    .btn-secondary:hover { transform: translateY(-3px) scale(1.04); box-shadow: 0 0 40px #fff01fbb; }
 
     /* ---- Fart Button Styling ---- */
     .fart-button {
@@ -100,18 +110,61 @@
       transition: all 0.1s active;
       animation: pulse 2s infinite;
     }
+    .fart-button:active { transform: scale(0.95); box-shadow: 0 0 10px #ff6b00; }
     @keyframes pulse {
       0% { box-shadow: 0 0 20px #ff6b00; } 50% { box-shadow: 0 0 50px #ff6b00, 0 0 20px #fff01f; } 100% { box-shadow: 0 0 20px #ff6b00; }
     }
 
     /* ---- Shake Animation ---- */
     @keyframes shake {
-      0% { transform: translate(1px, 1px) rotate(0deg); } 10% { transform: translate(-1px, -2px) rotate(-1deg); } 20% { transform: translate(-3px, 0px) rotate(1deg); } 30% { transform: translate(3px, 2px) rotate(0deg); } 40% { transform: translate(1px, -1px) rotate(1deg); } 50% { transform: translate(-1px, 2px) rotate(-1deg); } 60% { transform: translate(-3px, 1px) rotate(0deg); } 70% { transform: translate(3px, 1px) rotate(-1deg); } 80% { transform: translate(-1px, -1px) rotate(1deg); } 90% { transform: translate(1px, 2px) rotate(0deg); } 100% { transform: translate(1px, -2px) rotate(-1deg); }
+      0% { transform: translate(1px, 1px) rotate(0deg); }
+      10% { transform: translate(-1px, -2px) rotate(-1deg); }
+      20% { transform: translate(-3px, 0px) rotate(1deg); }
+      30% { transform: translate(3px, 2px) rotate(0deg); }
+      40% { transform: translate(1px, -1px) rotate(1deg); }
+      50% { transform: translate(-1px, 2px) rotate(-1deg); }
+      60% { transform: translate(-3px, 1px) rotate(0deg); }
+      70% { transform: translate(3px, 1px) rotate(-1deg); }
+      80% { transform: translate(-1px, -1px) rotate(1deg); }
+      90% { transform: translate(1px, 2px) rotate(0deg); }
+      100% { transform: translate(1px, -2px) rotate(-1deg); }
     }
     .shake { animation: shake 0.5s; animation-iteration-count: 1; }
 
-    .section-card { background: var(--card-bg); border: 1px solid #39ff1422; border-radius: 1.5rem; }
+    /* ---- Tokenomics donut ---- */
+    .donut-ring {
+      width: 220px; height: 220px;
+      border-radius: 50%;
+      background: conic-gradient(
+        #39ff14 0% 50%,
+        #fff01f 50% 65%,
+        #ff6b00 65% 75%,
+        #00e5ff 75% 85%,
+        #bf00ff 85% 100%
+      );
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+      box-shadow: 0 0 30px #39ff1455, 0 0 60px #39ff1422;
+    }
+    .donut-hole {
+      width: 110px; height: 110px;
+      background: var(--card-bg);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column;
+    }
+
+    .section-card {
+      background: var(--card-bg);
+      border: 1px solid #39ff1422;
+      border-radius: 1.5rem;
+    }
+
+    .burn-pulse { animation: burn-pulse 1.4s ease-in-out infinite; }
+    @keyframes burn-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
     .neon-divider { height: 2px; background: linear-gradient(90deg, transparent, #39ff14, transparent); }
+    nav a { transition: color 0.15s; }
+    nav a:hover { color: var(--neon-green); }
   </style>
 </head>
 <body>
@@ -131,6 +184,12 @@
     <div class="flex items-center gap-3">
       <img src="https://static.prod-images.emergentagent.com/jobs/9703f498-eb10-4d19-9053-0f140baa1855/images/df1dcaa7837232118610996638217d7551ced33bff15b396e8f40a82350a20dc.png" alt="$BAF Logo" class="w-9 h-9 rounded-full object-cover" />
       <span class="font-black-ops text-[var(--neon-green)] text-lg tracking-widest glow-green">$BAF</span>
+    </div>
+    <div class="hidden sm:flex items-center gap-8 text-sm font-semibold tracking-wide text-gray-300">
+      <a href="#tokenomics">Tokenomics</a>
+      <a href="#burn">The Burn</a>
+      <a href="#manifesto">Manifesto</a>
+      <a href="whitepaper.md" target="_blank">Whitepaper</a>
     </div>
     <a href="#cta" class="btn-primary text-sm py-2 px-5">Buy $BAF</a>
   </div>
@@ -153,49 +212,89 @@
 <section id="the-button" class="py-24 px-4 text-center bg-[#050705]">
   <div class="max-w-4xl mx-auto">
     <h2 class="font-black-ops text-4xl sm:text-5xl glow-orange text-[var(--neon-orange)] mb-8 uppercase">RELEASE THE GUST</h2>
-    
     <div class="relative inline-block">
       <button onclick="releaseTheGust()" class="fart-button">💨 PUSH FOR GUST 💨</button>
       <div id="gas-cloud" class="absolute inset-0 pointer-events-none opacity-0 flex items-center justify-center text-8xl transition-all duration-500">💨</div>
     </div>
-
-    <!-- HIGH AVAILABILITY SOURCES -->
     <audio id="fart-sound-1" src="https://archive.org/download/fart-with-reverb/fart-with-reverb.mp3" preload="auto"></audio>
     <audio id="fart-sound-2" src="https://archive.org/download/rude_and_shocking_sound_effects/Farting%20-%20Short.mp3" preload="auto"></audio>
   </div>
 </section>
+
+<div class="neon-divider"></div>
+
+<!-- ======== TOKENOMICS ======== -->
+<section id="tokenomics" class="py-24 px-4">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-16">
+      <h2 class="font-black-ops text-4xl sm:text-5xl glow-green text-[var(--neon-green)]">Tokenomics</h2>
+    </div>
+    <div class="flex flex-col lg:flex-row items-center gap-14">
+      <div class="donut-ring"><div class="donut-hole"><span class="font-black-ops text-[var(--neon-green)] text-xl">1B</span></div></div>
+      <div class="flex-1 grid sm:grid-cols-2 gap-5 w-full">
+        <div class="section-card p-6">500M - Liquidity Pool (Locked)</div>
+        <div class="section-card p-6">150M - Community Rewards</div>
+        <div class="section-card p-6">100M - Marketing</div>
+        <div class="section-card p-6">100M - Dev & Ops</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="neon-divider"></div>
+
+<!-- ======== THE BURN ======== -->
+<section id="burn" class="py-24 px-4">
+  <div class="max-w-5xl mx-auto grid sm:grid-cols-2 gap-8">
+    <div class="section-card p-8 text-center">
+      <div class="text-6xl burn-pulse">🔥</div>
+      <div class="font-black-ops text-6xl text-[var(--neon-orange)] glow-orange">1%</div>
+      <div class="text-white font-bold">BURN</div>
+    </div>
+    <div class="section-card p-8 text-center">
+      <div class="text-6xl">💸</div>
+      <div class="font-black-ops text-6xl text-[var(--neon-green)] glow-green">1%</div>
+      <div class="text-white font-bold">REFLECTION</div>
+    </div>
+  </div>
+</section>
+
+<div class="neon-divider"></div>
+
+<!-- ======== MANIFESTO ======== -->
+<section id="manifesto" class="py-24 px-4">
+  <div class="max-w-3xl mx-auto">
+    <h2 class="font-black-ops text-4xl text-center glow-yellow text-[var(--neon-yellow)] mb-12">The Manifesto 💨</h2>
+    <div class="section-card p-8 sm:p-12 text-gray-300 leading-relaxed text-lg space-y-6">
+      <p>$BAF is the wind of change. We accumulate. We hold. We burn. We reflect. Every transaction is a declaration — supply collapses, wallets grow, the mission compounds.</p>
+      <p class="font-black-ops text-[var(--neon-green)] text-2xl text-center">The gust is here. The gains are real. 💨</p>
+    </div>
+  </div>
+</section>
+
+<footer class="border-t border-[#39ff1422] py-10 px-4 text-center">
+  <p class="text-gray-600 text-xs">CA: <span class="text-[var(--neon-green)]">FStLCcWUyZmKeecBZ9RjxU8DYybf71LGhL5vKBoFM3Q6</span></p>
+  <p class="text-gray-700 text-xs mt-4">© 2026 $BAF Community · Built by the BAF Army</p>
+</footer>
 
 <script>
   const targetDate = new Date("2026-05-02T08:30:00Z").getTime();
   setInterval(function() {
     const now = new Date().getTime();
     const distance = targetDate - now;
-    const timeStr = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)) + "h " + Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)) + "m " + Math.floor((distance % (1000 * 60)) / 1000) + "s ";
-    document.getElementById("timer-top").innerHTML = timeStr;
+    document.getElementById("timer-top").innerHTML = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)) + "h " + Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)) + "m " + Math.floor((distance % (1000 * 60)) / 1000) + "s ";
   }, 1000);
 
   function releaseTheGust() {
     const sound1 = document.getElementById("fart-sound-1");
     const sound2 = document.getElementById("fart-sound-2");
     const cloud = document.getElementById("gas-cloud");
-
     document.body.classList.add("shake");
     cloud.style.opacity = "1";
     cloud.style.transform = "scale(1.5) translateY(-50px)";
-
-    // Try sound 1, then fallback to sound 2
     sound1.currentTime = 0;
-    sound1.play().catch(() => {
-        console.log("Sound 1 failed, trying fallback");
-        sound2.currentTime = 0;
-        sound2.play();
-    });
-    
-    setTimeout(() => {
-      document.body.classList.remove("shake");
-      cloud.style.opacity = "0";
-      cloud.style.transform = "scale(1) translateY(0)";
-    }, 500);
+    sound1.play().catch(() => { sound2.currentTime = 0; sound2.play(); });
+    setTimeout(() => { document.body.classList.remove("shake"); cloud.style.opacity = "0"; cloud.style.transform = "scale(1) translateY(0)"; }, 500);
   }
 </script>
 </body>
