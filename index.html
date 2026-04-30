@@ -81,6 +81,9 @@
     .neon-divider { height: 2px; background: linear-gradient(90deg, transparent, #39ff14, transparent); }
     nav a { transition: color 0.15s; }
     nav a:hover { color: var(--neon-green); }
+
+    /* Lore section specifics */
+    .lore-text { line-height: 1.8; letter-spacing: 0.02em; font-style: italic; }
   </style>
 </head>
 <body>
@@ -98,7 +101,7 @@
       <span class="font-black-ops text-[var(--neon-green)] text-lg tracking-widest">$BAF</span>
     </div>
     <div class="hidden sm:flex items-center gap-8 text-sm font-semibold tracking-wide text-gray-300">
-      <a href="#tokenomics">Tokenomics</a><a href="#burn">The Burn</a><a href="whitepaper.md" target="_blank">Whitepaper</a>
+      <a href="#tokenomics">Tokenomics</a><a href="#burn">The Burn</a><a href="#legend">The Lore</a><a href="whitepaper.md" target="_blank">Whitepaper</a>
     </div>
     <a href="#cta" class="btn-primary text-sm py-2 px-5" style="border: 2px solid var(--neon-green); border-radius: 99px; color: var(--neon-green); font-weight: bold;">Buy $BAF</a>
   </div>
@@ -124,6 +127,29 @@
 
 <div class="neon-divider"></div>
 
+<!-- ======== THE LEGEND SECTION ======== -->
+<section id="legend" class="py-24 px-4">
+  <div class="max-w-4xl mx-auto">
+    <div class="text-center mb-12">
+      <p class="text-[var(--neon-yellow)] font-semibold tracking-[0.3em] uppercase text-sm mb-3">The Origin Story</p>
+      <h2 class="font-black-ops text-4xl sm:text-5xl glow-yellow text-[var(--neon-yellow)]">THE LEGEND OF THE GUST 💨</h2>
+    </div>
+    
+    <div class="section-card p-10 lore-text text-gray-300 text-lg sm:text-xl border-[#fff01f33]">
+      <p class="mb-6 text-white font-bold">It was the peak of the 2024 bear market.</p>
+      <p class="mb-6">The air in the crypto space was thick with the smell of desperation, venture-backed lies, and "revolutionary" vaporware. Every degen on Solana was chasing the same 100th iteration of a dog with a hat, a frog in a suit, or a cat with a laser.</p>
+      <p class="mb-6">One night, high in the mountains of the Solana network, a lone developer named <strong class="text-[var(--neon-green)]">"The Eye"</strong> was staring at a screen full of stagnant charts. He realized something profound:</p>
+      <blockquote class="border-l-4 border-[var(--neon-green)] pl-6 py-4 mb-6 bg-[#080b08] text-white font-black-ops italic">
+        "Every one of these coins is just hot air. They promise the moon, but they don't have the force to move the needle."
+      </blockquote>
+      <p class="mb-6">At that exact moment, the power surged. A server fan failed. The room became impossibly still. And then—it happened. A sound so deep, so resonant, that it didn't just rattle the windows; it moved the blockchain itself.</p>
+      <p class="text-[var(--neon-green)] font-black text-2xl uppercase tracking-widest text-center">The Great Gust was born. 🌀</p>
+    </div>
+  </div>
+</section>
+
+<div class="neon-divider"></div>
+
 <!-- Tokenomics -->
 <section id="tokenomics" class="py-24 px-4">
   <div class="max-w-5xl mx-auto">
@@ -132,19 +158,19 @@
       <div class="donut-ring"><div class="donut-hole"><span class="font-black-ops text-[var(--neon-green)] text-3xl">1B</span></div></div>
       <div class="flex-1 grid sm:grid-cols-2 gap-5 w-full">
         <div class="section-card p-6 border-l-4 border-green-500">
-           <div class="text-green-500 font-black text-2xl lowercase">500,000,000 $BAF</div>
+           <div class="text-green-500 font-black text-2xl uppercase">500,000,000 $BAF</div>
            <div class="text-gray-400">Liquidity Pool (Locked Forever) 🌊</div>
         </div>
         <div class="section-card p-6 border-l-4 border-yellow-500">
-           <div class="text-yellow-500 font-black text-2xl lowercase">150,000,000 $BAF</div>
+           <div class="text-yellow-500 font-black text-2xl uppercase">150,000,000 $BAF</div>
            <div class="text-gray-400">Community Rewards & Airdrops 👥</div>
         </div>
         <div class="section-card p-6 border-l-4 border-orange-500">
-           <div class="text-orange-500 font-black text-2xl lowercase">100,000,000 $BAF</div>
+           <div class="text-orange-500 font-black text-2xl uppercase">100,000,000 $BAF</div>
            <div class="text-gray-400">Strategic Marketing & Influencers 📣</div>
         </div>
         <div class="section-card p-6 border-l-4 border-blue-500">
-           <div class="text-blue-500 font-black text-2xl lowercase">100,000,000 $BAF</div>
+           <div class="text-blue-500 font-black text-2xl uppercase">100,000,000 $BAF</div>
            <div class="text-gray-400">Development & Infrastructure ⚙️</div>
         </div>
       </div>
