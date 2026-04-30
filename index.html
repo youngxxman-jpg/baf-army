@@ -79,6 +79,8 @@
 
     .section-card { background: var(--card-bg); border: 1px solid #39ff1422; border-radius: 1.5rem; }
     .neon-divider { height: 2px; background: linear-gradient(90deg, transparent, #39ff14, transparent); }
+    nav a { transition: color 0.15s; }
+    nav a:hover { color: var(--neon-green); }
   </style>
 </head>
 <body>
@@ -92,42 +94,60 @@
 <nav class="sticky top-0 z-50 bg-[#080b08cc] backdrop-blur border-b border-[#39ff1422]">
   <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
     <div class="flex items-center gap-3">
-      <img src="https://static.prod-images.emergentagent.com/jobs/9703f498-eb10-4d19-9053-0f140baa1855/images/df1dcaa7837232118610996638217d7551ced33bff15b396e8f40a82350a20dc.png" alt="Logo" class="w-9 h-9 rounded-full" />
-      <span class="font-black-ops text-[var(--neon-green)] text-lg">$BAF</span>
+      <img src="https://static.prod-images.emergentagent.com/jobs/9703f498-eb10-4d19-9053-0f140baa1855/images/df1dcaa7837232118610996638217d7551ced33bff15b396e8f40a82350a20dc.png" alt="Logo" class="w-9 h-9 rounded-full">
+      <span class="font-black-ops text-[var(--neon-green)] text-lg tracking-widest">$BAF</span>
     </div>
     <div class="hidden sm:flex items-center gap-8 text-sm font-semibold tracking-wide text-gray-300">
       <a href="#tokenomics">Tokenomics</a><a href="#burn">The Burn</a><a href="whitepaper.md" target="_blank">Whitepaper</a>
     </div>
+    <a href="#cta" class="btn-primary text-sm py-2 px-5" style="border: 2px solid var(--neon-green); border-radius: 99px; color: var(--neon-green); font-weight: bold;">Buy $BAF</a>
   </div>
 </nav>
 
 <!-- Hero -->
 <section class="hero-bg min-h-screen flex flex-col items-center justify-center text-center px-4">
   <div class="mb-8 logo-pulse">
-    <img src="https://static.prod-images.emergentagent.com/jobs/9703f498-eb10-4d19-9053-0f140baa1855/images/df1dcaa7837232118610996638217d7551ced33bff15b396e8f40a82350a20dc.png" alt="Logo" class="w-36 h-36 sm:w-48 sm:h-48 rounded-full border-4 border-[#39ff1444]" />
+    <img src="https://static.prod-images.emergentagent.com/jobs/9703f498-eb10-4d19-9053-0f140baa1855/images/df1dcaa7837232118610996638217d7551ced33bff15b396e8f40a82350a20dc.png" alt="Logo" class="w-36 h-36 sm:w-48 sm:h-48 rounded-full border-4 border-[#39ff1444]">
   </div>
   <h1 class="font-black-ops text-5xl sm:text-7xl md:text-8xl leading-none text-[var(--neon-green)]">
-    THE GUST IS HERE.<br/><span class="text-[var(--neon-yellow)]">THE GAINS ARE REAL.</span>
+    THE GUST IS HERE.<br><span class="text-[var(--neon-yellow)]">THE GAINS ARE REAL.</span>
   </h1>
-  <div class="mt-10"><a href="https://t.me/BAFArmyOfficial" target="_blank" class="btn-primary">Join Telegram</a></div>
+  <div class="mt-10"><a href="https://t.me/BAFArmyOfficial" target="_blank" class="btn-primary" style="background: var(--neon-green); color: black; padding: 1rem 2.2rem; border-radius: 99px; font-weight: 900; text-decoration: none;">Join the BAF Army</a></div>
 </section>
 
 <!-- Fart Button -->
-<section class="py-24 text-center bg-[#050705]">
-  <h2 class="font-black-ops text-4xl glow-orange text-[var(--neon-orange)] mb-8">RELEASE THE GUST</h2>
+<section id="the-button" class="py-24 text-center bg-[#050705]">
+  <h2 class="font-black-ops text-4xl glow-orange text-[var(--neon-orange)] mb-8 uppercase tracking-widest">RELEASE THE GUST</h2>
   <button onclick="releaseTheGust()" class="fart-button">💨 PUSH FOR GUST 💨</button>
-  <div id="gas-cloud" class="opacity-0 text-8xl absolute pointer-events-none">💨</div>
+  <div id="gas-cloud" class="opacity-0 text-8xl absolute pointer-events-none" style="left: 50%; transform: translateX(-50%);">💨</div>
 </section>
+
+<div class="neon-divider"></div>
 
 <!-- Tokenomics -->
 <section id="tokenomics" class="py-24 px-4">
   <div class="max-w-5xl mx-auto">
-    <h2 class="font-black-ops text-4xl text-center text-[var(--neon-green)] mb-16">Tokenomics</h2>
-    <div class="grid sm:grid-cols-2 gap-5 text-gray-300">
-      <div class="section-card p-6">500,000,000 $BAF - Liquidity Pool (Locked)</div>
-      <div class="section-card p-6">150,000,000 $BAF - Community Rewards</div>
-      <div class="section-card p-6">100,000,000 $BAF - Strategic Marketing</div>
-      <div class="section-card p-6">100,000,000 $BAF - Dev & Ops</div>
+    <h2 class="font-black-ops text-4xl text-center text-[var(--neon-green)] mb-16 uppercase tracking-widest">Tokenomics</h2>
+    <div class="flex flex-col lg:flex-row items-center gap-14">
+      <div class="donut-ring"><div class="donut-hole"><span class="font-black-ops text-[var(--neon-green)] text-3xl">1B</span></div></div>
+      <div class="flex-1 grid sm:grid-cols-2 gap-5 w-full">
+        <div class="section-card p-6 border-l-4 border-green-500">
+           <div class="text-green-500 font-black text-2xl lowercase">500,000,000 $BAF</div>
+           <div class="text-gray-400">Liquidity Pool (Locked Forever) 🌊</div>
+        </div>
+        <div class="section-card p-6 border-l-4 border-yellow-500">
+           <div class="text-yellow-500 font-black text-2xl lowercase">150,000,000 $BAF</div>
+           <div class="text-gray-400">Community Rewards & Airdrops 👥</div>
+        </div>
+        <div class="section-card p-6 border-l-4 border-orange-500">
+           <div class="text-orange-500 font-black text-2xl lowercase">100,000,000 $BAF</div>
+           <div class="text-gray-400">Strategic Marketing & Influencers 📣</div>
+        </div>
+        <div class="section-card p-6 border-l-4 border-blue-500">
+           <div class="text-blue-500 font-black text-2xl lowercase">100,000,000 $BAF</div>
+           <div class="text-gray-400">Development & Infrastructure ⚙️</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -135,45 +155,63 @@
 <!-- Burn -->
 <section id="burn" class="py-24 px-4">
   <div class="max-w-5xl mx-auto grid sm:grid-cols-2 gap-8 text-center">
-    <div class="section-card p-8"><div class="text-6xl">🔥</div><div class="font-black-ops text-5xl text-[var(--neon-orange)]">1% BURN</div></div>
-    <div class="section-card p-8"><div class="text-6xl">💸</div><div class="font-black-ops text-5xl text-[var(--neon-green)]">1% REFLECTION</div></div>
+    <div class="section-card p-8 border-t-4 border-orange-500">
+      <div class="text-6xl mb-4">🔥</div>
+      <div class="font-black-ops text-6xl text-[var(--neon-orange)] glow-orange">1% BURN</div>
+      <p class="text-gray-400 mt-4 leading-relaxed font-bold text-xs tracking-widest uppercase">Effect: Deflationary Supply</p>
+    </div>
+    <div class="section-card p-8 border-t-4 border-green-500">
+      <div class="text-6xl mb-4">💸</div>
+      <div class="font-black-ops text-6xl text-[var(--neon-green)] glow-green">1% REFLECTION</div>
+      <p class="text-gray-400 mt-4 leading-relaxed font-bold text-xs tracking-widest uppercase">Effect: Passive Income</p>
+    </div>
   </div>
 </section>
 
-<footer class="py-10 text-center text-gray-600">
-  <p>CA: FStLCcWUyZmKeecBZ9RjxU8DYybf71LGhL5vKBoFM3Q6</p>
+<!-- Manifesto -->
+<section id="manifesto" class="py-24 px-4">
+  <div class="max-w-3xl mx-auto">
+    <h2 class="font-black-ops text-4xl text-center glow-yellow text-[var(--neon-yellow)] mb-12 uppercase tracking-widest">The Manifesto 💨</h2>
+    <div class="section-card p-8 sm:p-12 text-gray-300 leading-relaxed text-lg space-y-6">
+      <p>$BAF is the wind of change. We accumulate. We hold. We burn. We reflect. Every transaction is a declaration — supply collapses, wallets grow, the mission compounds.</p>
+      <p class="font-black-ops text-[var(--neon-green)] text-3xl text-center pt-4">THE GUST IS HERE. THE GAINS ARE REAL. 💨</p>
+    </div>
+  </div>
+</section>
+
+<footer class="py-10 text-center text-gray-600 border-t border-[#39ff1422]">
+  <p class="mb-4">CA: <span class="text-[var(--neon-green)] font-mono">FStLCcWUyZmKeecBZ9RjxU8DYybf71LGhL5vKBoFM3Q6</span></p>
+  <p class="text-xs uppercase tracking-widest">© 2026 $BAF Community · Built by the BAF Army</p>
 </footer>
 
 <script>
+  // Timer
   const targetDate = new Date("2026-05-02T08:30:00Z").getTime();
   setInterval(function() {
     const now = new Date().getTime();
     const d = targetDate - now;
+    if (d < 0) { document.getElementById("timer").innerHTML = "LIVE NOW!"; return; }
     document.getElementById("timer").innerHTML = Math.floor(d/(1000*60*60*24)) + "d " + Math.floor((d%(1000*60*60*24))/(1000*60*60)) + "h " + Math.floor((d%(1000*60*60))/(1000*60)) + "m ";
   }, 1000);
 
-  let audioCtx;
+  // AUDIO ENGINE
   function releaseTheGust() {
-    if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    if (audioCtx.state === 'suspended') audioCtx.resume();
-
-    const osc = audioCtx.createOscillator();
-    const gain = audioCtx.createGain();
-    const filter = audioCtx.createBiquadFilter();
-
-    osc.type = 'sawtooth';
-    filter.type = 'lowpass';
-    osc.connect(filter); filter.connect(gain); gain.connect(audioCtx.destination);
-
-    const now = audioCtx.currentTime;
-    osc.frequency.setValueAtTime(100, now);
-    osc.frequency.exponentialRampToValueAtTime(30, now + 0.6);
-    gain.gain.setValueAtTime(0.2, now);
-    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.6);
-
+    const audio = new Audio("https://raw.githubusercontent.com/baronv/soundboard/master/sounds/fart.mp3");
+    const cloud = document.getElementById("gas-cloud");
     document.body.classList.add("shake");
-    setTimeout(() => document.body.classList.remove("shake"), 500);
-    osc.start(now); osc.stop(now + 0.6);
+    cloud.style.opacity = "1";
+    cloud.style.transform = "scale(1.5) translateY(-50px)";
+    
+    audio.play().catch(e => {
+        console.error("Audio failed, trying fallback");
+        new Audio("https://archive.org/download/fart-with-reverb/fart-with-reverb.mp3").play();
+    });
+
+    setTimeout(() => {
+      document.body.classList.remove("shake");
+      cloud.style.opacity = "0";
+      cloud.style.transform = "scale(1) translateY(0)";
+    }, 500);
   }
 </script>
 </body>
