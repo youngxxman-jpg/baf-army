@@ -82,6 +82,7 @@
       box-shadow: 0 0 24px #39ff1480;
       display: inline-block;
       text-decoration: none;
+      cursor: pointer;
     }
     .btn-primary:hover { transform: translateY(-3px) scale(1.04); box-shadow: 0 0 40px #39ff14bb; }
 
@@ -97,8 +98,52 @@
       box-shadow: 0 0 24px #fff01f80;
       display: inline-block;
       text-decoration: none;
+      cursor: pointer;
     }
     .btn-secondary:hover { transform: translateY(-3px) scale(1.04); box-shadow: 0 0 40px #fff01fbb; }
+
+    /* ---- Fart Button Styling ---- */
+    .fart-button {
+      background: radial-gradient(circle, #ff6b00, #994000);
+      color: white;
+      font-family: 'Black Ops One', cursive;
+      font-size: 2rem;
+      padding: 2rem 4rem;
+      border-radius: 1rem;
+      border: 4px solid #fff01f;
+      box-shadow: 0 0 30px #ff6b00;
+      cursor: pointer;
+      transition: all 0.1s active;
+      animation: pulse 2s infinite;
+    }
+    .fart-button:active {
+      transform: scale(0.95);
+      box-shadow: 0 0 10px #ff6b00;
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 20px #ff6b00; }
+      50% { box-shadow: 0 0 50px #ff6b00, 0 0 20px #fff01f; }
+      100% { box-shadow: 0 0 20px #ff6b00; }
+    }
+
+    /* ---- Shake Animation ---- */
+    @keyframes shake {
+      0% { transform: translate(1px, 1px) rotate(0deg); }
+      10% { transform: translate(-1px, -2px) rotate(-1deg); }
+      20% { transform: translate(-3px, 0px) rotate(1deg); }
+      30% { transform: translate(3px, 2px) rotate(0deg); }
+      40% { transform: translate(1px, -1px) rotate(1deg); }
+      50% { transform: translate(-1px, 2px) rotate(-1deg); }
+      60% { transform: translate(-3px, 1px) rotate(0deg); }
+      70% { transform: translate(3px, 1px) rotate(-1deg); }
+      80% { transform: translate(-1px, -1px) rotate(1deg); }
+      90% { transform: translate(1px, 2px) rotate(0deg); }
+      100% { transform: translate(1px, -2px) rotate(-1deg); }
+    }
+    .shake {
+      animation: shake 0.5s;
+      animation-iteration-count: 1;
+    }
 
     /* ---- Tokenomics donut ---- */
     .donut-ring {
@@ -157,10 +202,10 @@
 <!-- ======== TICKER ======== -->
 <div class="ticker-wrap">
   <div class="ticker">
-    <span>💨 $BAF 💨</span><span>BIG ASS FARTCOIN</span><span>LAUNCHING IN <span id="timer"></span></span>
+    <span>💨 $BAF 💨</span><span>BIG ASS FARTCOIN</span><span>LAUNCHING IN <span id="timer-top"></span></span>
     <span>1B SUPPLY</span><span>1% BURN</span><span>1% REFLECTION</span>
     <span>🚀 TO THE MOON</span><span>$BAF ARMY RISING</span><span>WIND OF CHANGE</span>
-    <span>💨 $BAF 💨</span><span>BIG ASS FARTCOIN</span><span>LAUNCHING IN <span id="timer"></span></span>
+    <span>💨 $BAF 💨</span><span>BIG ASS FARTCOIN</span><span>LAUNCHING IN <span id="timer-top-2"></span></span>
     <span>1B SUPPLY</span><span>1% BURN</span><span>1% REFLECTION</span>
     <span>🚀 TO THE MOON</span><span>$BAF ARMY RISING</span><span>WIND OF CHANGE</span>
   </div>
@@ -221,20 +266,29 @@
 
   <!-- CTA Buttons -->
   <div id="cta" class="mt-10 flex flex-wrap justify-center gap-4">
-    <a href="https://t.me/" target="_blank" rel="noopener" class="btn-primary text-base">
+    <a href="https://t.me/BAFArmyOfficial" target="_blank" rel="noopener" class="btn-primary text-base">
       💬 Join the BAF Army (Telegram)
     </a>
     <a href="https://raydium.io/" target="_blank" rel="noopener" class="btn-secondary text-base">
       ⚡ Buy $BAF (Raydium)
     </a>
   </div>
+</section>
 
-  <!-- Scroll hint -->
-  <div class="mt-16 flex flex-col items-center gap-2 opacity-40 text-xs tracking-widest uppercase text-[var(--neon-green)]">
-    <span>Scroll down</span>
-    <svg class="w-5 h-5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-    </svg>
+<!-- ======== FART BUTTON SECTION ======== -->
+<section id="the-button" class="py-24 px-4 text-center bg-[#050705]">
+  <div class="max-w-4xl mx-auto">
+    <h2 class="font-black-ops text-4xl sm:text-5xl glow-orange text-[var(--neon-orange)] mb-8 uppercase">RELEASE THE GUST</h2>
+    <p class="text-gray-400 mb-12 text-lg">Click the button to feel the sheer power of $BAF. (Caution: May cause screen tremors)</p>
+    
+    <div class="relative inline-block">
+      <button onclick="releaseTheGust()" class="fart-button">
+        💨 PUSH FOR GUST 💨
+      </button>
+      <div id="gas-cloud" class="absolute inset-0 pointer-events-none opacity-0 flex items-center justify-center text-8xl transition-all duration-500">💨</div>
+    </div>
+
+    <audio id="fart-sound" src="https://soundbible.com/grab.php?id=2080&type=mp3"></audio>
   </div>
 </section>
 
@@ -344,7 +398,7 @@
           Every single transaction burns <strong class="text-[var(--neon-orange)]">1% of $BAF forever</strong>.
           Supply shrinks. Scarcity grows. Price pressure builds — permanently.
         </p>
-        <div class="mt-6 bg-[#1a0a00] border border-[#ff6b0033] rounded-xl p-4">
+        <div class="mt-6 bg="#1a0a00" border border-[#ff6b0033] rounded-xl p-4">
           <p class="text-xs text-gray-500 uppercase tracking-widest">Effect</p>
           <p class="text-[var(--neon-orange)] font-black text-lg mt-1">Deflationary Supply</p>
         </div>
@@ -464,14 +518,14 @@
       The revolution is airborne. Get in before the wind shifts.
     </p>
     <div class="flex flex-wrap justify-center gap-5">
-      <a href="https://t.me/" target="_blank" rel="noopener" class="btn-primary text-base">
+      <a href="https://t.me/BAFArmyOfficial" target="_blank" rel="noopener" class="btn-primary text-base">
         💬 Join Telegram
       </a>
       <a href="https://raydium.io/" target="_blank" rel="noopener" class="btn-secondary text-base">
         ⚡ Buy $BAF on Raydium
       </a>
     </div>
-    <p class="mt-8 text-gray-600 text-sm">Contract Address: <span class="text-[var(--neon-green)] font-mono">TBA — Stay tuned on Telegram</span></p>
+    <p class="mt-8 text-gray-600 text-sm">Contract Address: <span class="text-[var(--neon-green)] font-mono">FStLCcWUyZmKeecBZ9RjxU8DYybf71LGhL5vKBoFM3Q6</span></p>
   </div>
 </section>
 
@@ -491,8 +545,9 @@
   <p class="text-gray-700 text-xs mt-4">© 2025 $BAF Community · Built by the BAF Army</p>
 </footer>
 
-<!-- Smooth scroll -->
+<!-- JavaScript Functions -->
 <script>
+  // Smooth scroll
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       const target = document.querySelector(this.getAttribute('href'));
@@ -502,18 +557,45 @@
       }
     });
   });
-</script>
 
-<script>
+  // Countdown Timer
   const targetDate = new Date("2026-05-02T08:30:00Z").getTime();
+  const timerElements = [document.getElementById("timer-top"), document.getElementById("timer-top-2")];
+  
   setInterval(function() {
     const now = new Date().getTime();
     const distance = targetDate - now;
+    if (distance < 0) {
+      timerElements.forEach(el => el.innerHTML = "LIVE NOW!");
+      return;
+    }
     const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    document.getElementById("timer").innerHTML = hours + "h " + minutes + "m " + seconds + "s ";
+    const timeStr = hours + "h " + minutes + "m " + seconds + "s ";
+    timerElements.forEach(el => el.innerHTML = timeStr);
   }, 1000);
+
+  // Fart Button Logic
+  function releaseTheGust() {
+    const sound = document.getElementById("fart-sound");
+    const cloud = document.getElementById("gas-cloud");
+    
+    // Play sound
+    sound.currentTime = 0;
+    sound.play();
+
+    // Visual feedback
+    document.body.classList.add("shake");
+    cloud.style.opacity = "1";
+    cloud.style.transform = "scale(1.5) translateY(-50px)";
+    
+    setTimeout(() => {
+      document.body.classList.remove("shake");
+      cloud.style.opacity = "0";
+      cloud.style.transform = "scale(1) translateY(0)";
+    }, 500);
+  }
 </script>
 </body>
 </html>
