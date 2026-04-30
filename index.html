@@ -221,7 +221,7 @@
       <button onclick="releaseTheGust()" class="fart-button">💨 PUSH FOR GUST 💨</button>
       <div id="gas-cloud" class="absolute inset-0 pointer-events-none opacity-0 flex items-center justify-center text-8xl transition-all duration-500">💨</div>
     </div>
-    <audio id="fart-sound" src="https://raw.githubusercontent.com/jonjonsson/SoundMonster/master/sounds/fart%20powerful.mp3"></audio>
+    <p class="mt-8 text-gray-500 italic">Engineered for 100% reliability. No voices. No Halloween. Just pure gust.</p>
   </div>
 </section>
 
@@ -236,10 +236,14 @@
     <div class="flex flex-col lg:flex-row items-center gap-14">
       <div class="donut-ring"><div class="donut-hole"><span class="font-black-ops text-[var(--neon-green)] text-xl">1B</span></div></div>
       <div class="flex-1 grid sm:grid-cols-2 gap-5 w-full">
-        <div class="section-card p-6">500M - Liquidity Pool (Locked)</div>
-        <div class="section-card p-6">150M - Community Rewards</div>
-        <div class="section-card p-6">100M - Marketing</div>
-        <div class="section-card p-6">100M - Dev & Ops</div>
+        <div class="section-card p-6 font-bold">500,000,000 $BAF</div>
+        <div class="text-gray-400">Liquidity Pool (Locked Forever)</div>
+        <div class="section-card p-6 font-bold">150,000,000 $BAF</div>
+        <div class="text-gray-400">Community Rewards & Airdrops</div>
+        <div class="section-card p-6 font-bold">100,000,000 $BAF</div>
+        <div class="text-gray-400">Strategic Marketing & Influencers</div>
+        <div class="section-card p-6 font-bold">100,000,000 $BAF</div>
+        <div class="text-gray-400">Development & Infrastructure</div>
       </div>
     </div>
   </div>
@@ -254,34 +258,24 @@
       <div class="text-6xl burn-pulse">🔥</div>
       <div class="font-black-ops text-6xl text-[var(--neon-orange)] glow-orange">1%</div>
       <div class="text-white font-bold">BURN</div>
+      <p class="text-gray-400 mt-4">Every transaction shrinks the supply permanently. Deflationary power.</p>
     </div>
     <div class="section-card p-8 text-center">
       <div class="text-6xl">💸</div>
       <div class="font-black-ops text-6xl text-[var(--neon-green)] glow-green">1%</div>
       <div class="text-white font-bold">REFLECTION</div>
-    </div>
-  </div>
-</section>
-
-<div class="neon-divider"></div>
-
-<!-- ======== MANIFESTO ======== -->
-<section id="manifesto" class="py-24 px-4">
-  <div class="max-w-3xl mx-auto">
-    <h2 class="font-black-ops text-4xl text-center glow-yellow text-[var(--neon-yellow)] mb-12">The Manifesto 💨</h2>
-    <div class="section-card p-8 sm:p-12 text-gray-300 leading-relaxed text-lg space-y-6">
-      <p>$BAF is the wind of change. We accumulate. We hold. We burn. We reflect. Every transaction is a declaration — supply collapses, wallets grow, the mission compounds.</p>
-      <p class="font-black-ops text-[var(--neon-green)] text-2xl text-center">The gust is here. The gains are real. 💨</p>
+      <p class="text-gray-400 mt-4">Holders earn $BAF automatically. Passive income for every breath.</p>
     </div>
   </div>
 </section>
 
 <footer class="border-t border-[#39ff1422] py-10 px-4 text-center">
-  <p class="text-gray-600 text-xs">CA: <span class="text-[var(--neon-green)]">FStLCcWUyZmKeecBZ9RjxU8DYybf71LGhL5vKBoFM3Q6</span></p>
+  <p class="text-gray-600 text-xs">CA: <span class="text-[var(--neon-green)] font-mono">FStLCcWUyZmKeecBZ9RjxU8DYybf71LGhL5vKBoFM3Q6</span></p>
   <p class="text-gray-700 text-xs mt-4">© 2026 $BAF Community · Built by the BAF Army</p>
 </footer>
 
 <script>
+  // Countdown Timer
   const targetDate = new Date("2026-05-02T08:30:00Z").getTime();
   setInterval(function() {
     const now = new Date().getTime();
@@ -290,16 +284,64 @@
     document.getElementById("timer-top").innerHTML = timeStr;
   }, 1000);
 
+  // SYNTHESIZED GUST ENGINE (100% Reliable, No external files!)
   function releaseTheGust() {
-    const sound = document.getElementById("fart-sound");
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     const cloud = document.getElementById("gas-cloud");
+
+    // 1. Setup Nodes
+    const oscillator = audioCtx.createOscillator();
+    const gainNode = audioCtx.createGain();
+    const filter = audioCtx.createBiquadFilter();
+
+    oscillator.type = 'sawtooth';
+    filter.type = 'lowpass';
+
+    // 2. Connect Graph
+    oscillator.connect(filter);
+    filter.connect(gainNode);
+    gainNode.connect(audioCtx.destination);
+
+    // 3. The Sound Formula
+    const now = audioCtx.currentTime;
+    const duration = 0.8;
+
+    // Frequency envelope (The "Drop")
+    oscillator.frequency.setValueAtTime(110, now);
+    oscillator.frequency.exponentialRampToValueAtTime(40, now + duration);
+
+    // Filter envelope (The "Muffle")
+    filter.frequency.setValueAtTime(400, now);
+    filter.frequency.exponentialRampToValueAtTime(100, now + duration);
+
+    // Volume envelope (The "Impact")
+    gainNode.gain.setValueAtTime(0.3, now);
+    gainNode.gain.exponentialRampToValueAtTime(0.01, now + duration);
+
+    // 4. Fire visuals
     document.body.classList.add("shake");
     cloud.style.opacity = "1";
     cloud.style.transform = "scale(1.5) translateY(-50px)";
-    sound.currentTime = 0;
-    sound.play();
-    setTimeout(() => { document.body.classList.remove("shake"); cloud.style.opacity = "0"; cloud.style.transform = "scale(1) translateY(0)"; }, 500);
+
+    // 5. Start and Clean up
+    oscillator.start(now);
+    oscillator.stop(now + duration);
+
+    setTimeout(() => {
+      document.body.classList.remove("shake");
+      cloud.style.opacity = "0";
+      cloud.style.transform = "scale(1) translateY(0)";
+      audioCtx.close();
+    }, duration * 1000);
   }
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
 </script>
 </body>
 </html>
